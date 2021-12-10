@@ -1,6 +1,6 @@
 package Robot_en_Marte;
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Result {
@@ -14,30 +14,14 @@ public class Result {
 
 
         
-         List<String> instruccion= new LinkedList<String>();
+         List<String> instruccion= Arrays.asList(u,r,r,u);
 
-        instruccion.add(u);
-        instruccion.add(r);
-        instruccion.add(r);
-        instruccion.add(u);
 
-        for (Integer list : Result.calcularMaximoRetorno(instruccion)) {
-          switch(list){
-              case 1:
-              System.out.println(list + " = R");
-              break;
-              case 2:
-              System.out.println(list + " = l");
-              break;
-              case 3:
-              System.out.println(list + " = U");
-              break;
-              case 4:
-              System.out.println(list + " = D");
-              break;
-          }
-        }
-           
+         Result.calcularMaximoRetorno(instruccion)
+         .stream()
+         .forEach(System.out::println);
+
+          
     }
 
 
@@ -45,9 +29,10 @@ public class Result {
         
         List<Integer> ruta = new ArrayList<>();
 
-        for (String list : instruccion) {
-            ruta.add(Integer.parseInt(list));
-        }
+        instruccion.stream()
+        .map(x-> Integer.parseInt(x))
+        .forEach(ruta::add);
+
         return ruta;
     }
 }
