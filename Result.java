@@ -14,14 +14,31 @@ public class Result {
 
 
         
-         List<String> instruccion= Arrays.asList(u,r,r,u);
+         List<String> instruccion= Arrays.asList(r,u,d,r);
 
-
+        
          Result.calcularMaximoRetorno(instruccion)
          .stream()
-         .forEach(System.out::println);
-
-          
+         .map(x -> String.valueOf(x))
+         .forEach((x) ->{
+            switch (x) {
+                case "1":
+                    System.out.println("R");
+                    break;
+                case "2" :
+                    System.out.println("L");
+                    break;
+                case "3" :
+                    System.out.println("U");
+                    break;
+                case "4" :
+                    System.out.println("D");
+                    break;
+                default:
+                    break;
+            }
+         });
+     
     }
 
 
